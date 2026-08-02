@@ -1,50 +1,47 @@
-# Mergington High School Activities API
+# API de Atividades da Mergington High School
 
-A super simple FastAPI application that allows students to view and sign up for extracurricular activities.
+Uma aplicação FastAPI super simples que permite que estudantes vejam e se inscrevam em atividades extracurriculares.
 
-## Features
+## Funcionalidades
 
-- View all available extracurricular activities
-- Sign up for activities
+- Listar todas as atividades extracurriculares disponíveis
+- Permitir inscrição de estudantes em atividades
 
-## Getting Started
+## Como começar
 
-1. Install the dependencies:
+1. Instale as dependências:
 
    ```
    pip install fastapi uvicorn
    ```
 
-2. Run the application:
+2. Execute a aplicação:
 
    ```
    python app.py
    ```
 
-3. Open your browser and go to:
-   - API documentation: http://localhost:8000/docs
-   - Alternative documentation: http://localhost:8000/redoc
+3. Abra no navegador:
+   - Documentação da API (Swagger UI): http://localhost:8000/docs
+   - Documentação alternativa (Redoc): http://localhost:8000/redoc
 
-## API Endpoints
+## Endpoints da API
 
-| Method | Endpoint                                                          | Description                                                         |
-| ------ | ----------------------------------------------------------------- | ------------------------------------------------------------------- |
-| GET    | `/activities`                                                     | Get all activities with their details and current participant count |
-| POST   | `/activities/{activity_name}/signup?email=student@mergington.edu` | Sign up for an activity                                             |
+| Método | Endpoint                                                         | Descrição                                                             |
+| ------ | ---------------------------------------------------------------- | --------------------------------------------------------------------- |
+| GET    | `/activities`                                                     | Retorna todas as atividades com detalhes e contagem de participantes  |
+| POST   | `/activities/{activity_name}/signup?email=student@mergington.edu` | Inscreve um estudante em uma atividade                                |
 
-## Data Model
+## Modelo de dados
 
-The application uses a simple data model with meaningful identifiers:
+A aplicação armazena dados em memória (serão perdidos ao reiniciar o servidor).
 
-1. **Activities** - Uses activity name as identifier:
+1. Activities — identificada pelo nome da atividade:
+   - description
+   - schedule
+   - max_participants
+   - participants (lista de emails)
 
-   - Description
-   - Schedule
-   - Maximum number of participants allowed
-   - List of student emails who are signed up
-
-2. **Students** - Uses email as identifier:
-   - Name
-   - Grade level
-
-All data is stored in memory, which means data will be reset when the server restarts.
+2. Students — identificado por email:
+   - name
+   - grade level
